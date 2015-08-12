@@ -51,13 +51,15 @@ fixLastRow <- function(editOrDelete = c("delete", "edit"),
     if (!(editOrDelete %in% c("delete", "edit"))) stop("Wait, what am I doing?")
     
     dat <- read.csv(mypath)
-    row <- nrow(dat)    
+    row <- nrow(dat)
+    
+    message("Row being removed:")
+    print(dat[row, ])
     dat <- dat[-row, ]
     write.csv(dat, file = mypath, row.names = FALSE)
     
     if (editOrDelete == "edit") {
-        
-        updateTimesheet(start, end, path = mypath)
+        updateTimesheet(start, end, path = mypath
     }
 }
 
