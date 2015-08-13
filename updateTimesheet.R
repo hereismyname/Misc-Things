@@ -12,7 +12,7 @@ updateTimesheet <- function(st, ed, description = NULL,
         
         if(is.null(st) | is.null(ed)) stop("Start/End time missing!")
         
-        duration <- signif(ed - st, 3)
+        duration <- difftime(ed, st, unit = "hour")
         unit <- attributes(duration)$units
         report <- paste(duration, unit)
         
